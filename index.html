@@ -4,19 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mis XV Años - Aylin Amairani</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Pinyon+Script&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Pinyon+Script&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Paleta Azul Cielo Vibrante, Azul Fuerte y Plata */
-            --bg-base: #DDF0FA;        /* Azul cielo de fondo */
-            --blue-primary: #1A3C5A;   /* Azul fuerte elegante para botones y contraste */
-            --blue-light: #A8D6F2;     /* Azul cielo brillante para destellos */
-            --silver-light: #F2F2F2;  
-            --silver-metallic: #B3B6B7; 
+            /* Paleta Azul Zafiro Fuerte y Plata Premium */
+            --bg-base: #1A4A71;        /* Azul fuerte oscuro de fondo */
+            --bg-glow: #2874A6;        /* Azul brillante para el centro del degradado */
+            --blue-primary: #0F2E4A;   /* Azul ultra oscuro elegante para botones */
+            --blue-light: #5DADE2;     /* Azul vibrante para los destellos */
+            --silver-light: #F8F9FA;  
+            --silver-metallic: #D4D8DC; 
             --silver-dark: #6C7A86;
-            --text-dark: #111D24;      /* Muy oscuro para máximo contraste */
-            --text-muted: #475B6B;     /* Contraste mejorado */
-            --white-glass: rgba(255, 255, 255, 0.85); /* Más opaco para leer mejor */
+            --text-dark: #111D24;      /* Texto oscuro para tarjetas de cristal */
+            --text-muted: #3B4B58;     
+            --white-glass: rgba(255, 255, 255, 0.88); /* Cristal con alta opacidad para contraste */
             
             --transition-smooth: cubic-bezier(0.25, 1, 0.5, 1);
         }
@@ -31,7 +32,7 @@
             width: 100%;
             font-family: 'Montserrat', sans-serif;
             background-color: var(--bg-base);
-            color: var(--text-dark);
+            color: var(--silver-light); /* Color por defecto claro por el fondo oscuro */
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
@@ -40,7 +41,7 @@
         .background-fx {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 0%, #BBE3FA 0%, var(--bg-base) 80%);
+            background: radial-gradient(circle at 50% 0%, var(--bg-glow) 0%, var(--bg-base) 80%);
             z-index: -2;
         }
 
@@ -58,19 +59,19 @@
 
         @keyframes floatSparkle {
             0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            10% { opacity: 0.8; transform: translateY(90vh) scale(1); }
-            90% { opacity: 0.8; transform: translateY(10vh) scale(1); }
+            10% { opacity: 0.9; transform: translateY(90vh) scale(1); }
+            90% { opacity: 0.9; transform: translateY(10vh) scale(1); }
             100% { transform: translateY(0) scale(0); opacity: 0; }
         }
 
         @keyframes pulseGlow {
             0% { box-shadow: 0 0 5px #ffffff, 0 0 10px var(--blue-light); }
-            100% { box-shadow: 0 0 15px #ffffff, 0 0 25px var(--blue-light); }
+            100% { box-shadow: 0 0 18px #ffffff, 0 0 35px var(--blue-light); }
         }
 
         /* --- EFECTOS DE TEXTO METALIZADO --- */
         .text-silver {
-            background: linear-gradient(to right, #7a7a7a, #c4c4c4, #ffffff, #c4c4c4, #7a7a7a);
+            background: linear-gradient(to right, #9fa5a9, #ffffff, #e0e5e8, #ffffff, #9fa5a9);
             background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -88,7 +89,7 @@
             -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 1);
             border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(168, 214, 242, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.6);
             padding: 40px 25px;
             width: 100%;
             max-width: 450px;
@@ -97,14 +98,20 @@
             z-index: 2;
         }
 
+        /* Colores de texto especiales para dentro de la tarjeta de cristal */
+        .glass-card .info-title { color: var(--silver-dark); }
+        .glass-card .info-data { color: var(--text-dark); }
+        .glass-card .body-serif { color: var(--text-muted); }
+        .glass-card .tag-line { color: var(--silver-dark); }
+
         /* --- REPRODUCTOR DE MÚSICA --- */
         .sticky-music-btn {
             position: fixed; bottom: 30px; right: 30px;
             width: 55px; height: 55px;
-            background: linear-gradient(135deg, #d4d4d4, #ffffff);
+            background: linear-gradient(135deg, #e0e5e8, #ffffff);
             border-radius: 50%;
             display: flex; justify-content: center; align-items: center;
-            box-shadow: 0 10px 25px rgba(26, 60, 90, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
             z-index: 2000; cursor: pointer;
             opacity: 0; visibility: hidden;
             transform: translateY(20px) scale(0.9);
@@ -116,13 +123,13 @@
             opacity: 1; visibility: visible; transform: translateY(0) scale(1);
         }
 
-        .sticky-music-btn:hover { transform: scale(1.1); box-shadow: 0 10px 30px rgba(26, 60, 90, 0.5); }
-        .sticky-music-btn svg { width: 22px; height: 22px; fill: var(--blue-primary); }
+        .sticky-music-btn:hover { transform: scale(1.1); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); }
+        .sticky-music-btn svg { width: 22px; height: 22px; fill: var(--bg-base); }
 
         /* --- SOBRE EDITORIAL --- */
         #envelope-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at center, #ffffff 0%, var(--bg-base) 100%);
+            background: radial-gradient(circle at center, var(--bg-glow) 0%, var(--bg-base) 100%);
             z-index: 1000; display: flex; flex-direction: column; justify-content: center; align-items: center;
             transition: opacity 1.2s ease-in-out, visibility 1.2s;
         }
@@ -136,7 +143,7 @@
 
         .env-tag {
             font-family: 'Cinzel', serif; font-size: 14px; letter-spacing: 8px;
-            text-transform: uppercase; color: var(--silver-dark); font-weight: 600;
+            text-transform: uppercase; color: var(--silver-metallic); font-weight: 600;
         }
 
         .env-title {
@@ -153,27 +160,27 @@
         .envelope {
             position: relative; width: 320px; height: 210px;
             background-color: #ffffff; border-radius: 4px;
-            box-shadow: 0 20px 40px rgba(168, 214, 242, 0.5); 
-            border: 1px solid #BFE0F5;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3); 
+            border: 1px solid #E6F0F9;
         }
 
         .envelope::before {
             content: ''; position: absolute; top: 0; right: 0;
-            border-right: 160px solid #BFE0F5; border-top: 105px solid transparent;
-            border-bottom: 105px solid #BFE0F5; z-index: 2;
+            border-right: 160px solid #E6F0F9; border-top: 105px solid transparent;
+            border-bottom: 105px solid #E6F0F9; z-index: 2;
         }
         .envelope::after {
             content: ''; position: absolute; top: 0; left: 0;
-            border-left: 160px solid #DDF0FA; border-top: 105px solid transparent;
-            border-bottom: 105px solid #DDF0FA; z-index: 2;
+            border-left: 160px solid #F2F7FA; border-top: 105px solid transparent;
+            border-bottom: 105px solid #F2F7FA; z-index: 2;
         }
 
         .front-flap {
             position: absolute; top: 0; left: 0;
             border-left: 160px solid transparent; border-right: 160px solid transparent;
-            border-top: 115px solid #AED6F2; transform-origin: top;
+            border-top: 115px solid #D3E4F2; transform-origin: top;
             transition: transform 0.9s var(--transition-smooth); z-index: 4;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
         }
 
         .envelope-wrapper.open .front-flap { transform: rotateX(180deg); z-index: 1; }
@@ -184,7 +191,7 @@
             background: radial-gradient(circle, #e6e6e6, #b0b0b0);
             border: 2px solid #ffffff;
             border-radius: 50%; z-index: 5; display: flex; justify-content: center; align-items: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25); 
             transition: opacity 0.5s ease 0.1s, transform 0.5s ease;
         }
         .wax-seal svg { width: 25px; height: 25px; fill: #ffffff; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2)); }
@@ -192,11 +199,11 @@
 
         .hint-text {
             text-align: center; font-size: 11px; font-weight: 600; text-transform: uppercase; 
-            letter-spacing: 4px; color: var(--silver-dark); margin-top: 40px; 
+            letter-spacing: 4px; color: var(--silver-metallic); margin-top: 40px; 
             animation: pulse 2.5s infinite;
         }
 
-        @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
+        @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
         @keyframes floatText { 0% { transform: translateY(0); } 50% { transform: translateY(-5px); } 100% { transform: translateY(0); } }
 
         /* --- CONTENIDO PRINCIPAL --- */
@@ -228,18 +235,18 @@
         /* Tipografía Editorial */
         .tag-line {
             font-family: 'Cinzel', serif; font-size: 14px; letter-spacing: 5px;
-            text-transform: uppercase; color: var(--silver-dark); margin-bottom: 25px; font-weight: 600;
+            text-transform: uppercase; color: var(--silver-metallic); margin-bottom: 25px; font-weight: 600;
         }
 
         .title-script {
             font-family: 'Pinyon Script', cursive; font-size: 85px;
             margin-bottom: 20px; line-height: 1.1; font-weight: 400;
-            text-shadow: 0 4px 15px rgba(168, 214, 242, 0.4);
+            text-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
         }
 
         .body-serif {
             font-family: 'Cormorant Garamond', serif; font-size: 24px;
-            line-height: 1.6; color: var(--text-dark); font-style: italic;
+            line-height: 1.6; color: #EAEFEF; font-style: italic;
             max-width: 650px; padding: 0 15px; font-weight: 500;
         }
 
@@ -248,18 +255,18 @@
 
         .info-title {
             font-family: 'Cinzel', serif; font-size: 15px; letter-spacing: 3px; line-height: 1.4;
-            text-transform: uppercase; color: var(--silver-dark); margin-bottom: 12px; font-weight: 700;
+            text-transform: uppercase; color: var(--silver-metallic); margin-bottom: 12px; font-weight: 700;
         }
 
         .info-data {
             font-family: 'Cormorant Garamond', serif; font-size: 36px;
-            color: var(--text-dark); margin-bottom: 5px; font-weight: 600; line-height: 1.3;
+            color: #FFFFFF; margin-bottom: 5px; font-weight: 600; line-height: 1.3;
         }
 
         /* Imágenes Editoriales */
         .photo-frame {
             width: 100%; max-width: 420px; margin: 40px auto;
-            box-shadow: 0 20px 40px rgba(168, 214, 242, 0.4); border-radius: 15px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3); border-radius: 15px;
             overflow: hidden; border: 4px solid rgba(255,255,255,0.9); position: relative; z-index: 2;
         }
         .photo-frame img { width: 100%; display: block; filter: contrast(1.05) saturate(0.95); transition: transform 0.6s ease; }
@@ -268,17 +275,17 @@
         /* Botones Plateados con Azul Fuerte */
         .btn-solid {
             display: inline-block; 
-            background: linear-gradient(135deg, var(--blue-primary), #2C5779); color: #fff;
+            background: linear-gradient(135deg, #183C5B, var(--blue-primary)); color: #fff;
             padding: 18px 40px; font-family: 'Montserrat', sans-serif; font-size: 13px;
             font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
-            text-decoration: none; border: 1px solid rgba(255,255,255,0.2); cursor: pointer; border-radius: 30px;
+            text-decoration: none; border: 1px solid rgba(255,255,255,0.3); cursor: pointer; border-radius: 30px;
             transition: all 0.4s ease; margin-top: 30px; position: relative; z-index: 5;
-            box-shadow: 0 10px 20px rgba(26, 60, 90, 0.25);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
-        .btn-solid:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(26, 60, 90, 0.4); background: linear-gradient(135deg, #2C5779, #3A6B94); }
+        .btn-solid:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4); background: linear-gradient(135deg, #1C456A, #183C5B); }
 
         /* Iconos Decorativos */
-        .svg-icon { width: 45px; height: 45px; fill: var(--silver-metallic); margin-bottom: 20px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1)); }
+        .svg-icon { width: 45px; height: 45px; fill: var(--silver-metallic); margin-bottom: 20px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3)); }
 
         /* --- CUENTA REGRESIVA --- */
         .countdown-container {
@@ -291,7 +298,7 @@
             border-radius: 10px;
             width: 75px; height: 85px;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            box-shadow: 0 10px 20px rgba(168, 214, 242, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
         .count-num { font-family: 'Cinzel', serif; font-size: 28px; font-weight: 700; color: var(--text-dark); }
         .count-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--silver-dark); margin-top: 5px; font-weight: 600; }
@@ -315,28 +322,28 @@
             aspect-ratio: 1;
         }
         .cal-day.active {
-            background: linear-gradient(135deg, var(--blue-primary), #2C5779); color: #fff; border-radius: 50%; 
-            font-weight: 600; box-shadow: 0 4px 12px rgba(26, 60, 90, 0.4);
+            background: linear-gradient(135deg, #1A4A71, #0F2E4A); color: #fff; border-radius: 50%; 
+            font-weight: 600; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
         /* Mapas */
         .map-box {
             width: 100%; max-width: 550px; height: 320px; margin: 30px auto;
             overflow: hidden; border-radius: 15px; border: 1px solid rgba(255,255,255,1);
-            box-shadow: 0 15px 40px rgba(168, 214, 242, 0.4); position: relative; z-index: 2;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); position: relative; z-index: 2;
         }
-        .map-box iframe { width: 100%; height: 100%; border: none; filter: grayscale(10%) sepia(5%) hue-rotate(180deg); }
+        .map-box iframe { width: 100%; height: 100%; border: none; filter: grayscale(15%) sepia(10%) hue-rotate(180deg); }
 
         /* Formularios RSVP Finos */
         .form-group { width: 100%; margin: 0 auto 20px auto; position: relative; z-index: 2; }
         .input-line {
             width: 100%; padding: 18px 0; background: transparent; border: none;
-            border-bottom: 2px solid rgba(168, 214, 242, 0.8); color: var(--text-dark);
+            border-bottom: 2px solid rgba(15, 46, 74, 0.3); color: var(--text-dark);
             font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 600; outline: none;
             text-align: center; transition: border-color 0.4s;
         }
-        .input-line:focus { border-bottom-color: var(--blue-primary); }
-        .input-line::placeholder { color: #8FA2B3; font-style: normal; font-weight: 500; }
+        .input-line:focus { border-bottom-color: var(--bg-base); }
+        .input-line::placeholder { color: #7F8FA4; font-style: normal; font-weight: 500; }
         textarea.input-line { resize: vertical; min-height: 90px; }
         select.input-line { appearance: none; text-align-last: center; cursor: pointer; }
 
@@ -432,7 +439,7 @@
             <svg class="anim-element anim-fade-up delay-1 svg-icon" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/></svg>
             <div class="anim-element anim-fade-up delay-1 info-title">Nuestra Cita</div>
             <div class="anim-element anim-fade-up delay-2 info-data text-silver" style="font-size: 42px; font-weight: 700;">14 de Diciembre</div>
-            <div class="anim-element anim-fade-up delay-3 info-data" style="font-size: 26px; color: var(--silver-dark); letter-spacing: 3px;">2026</div>
+            <div class="anim-element anim-fade-up delay-3 info-data" style="font-size: 26px; color: var(--silver-metallic); letter-spacing: 3px;">2026</div>
 
             <div class="anim-element anim-zoom delay-3 countdown-container" id="countdown">
                 <div class="count-box"><span class="count-num" id="cd-days">00</span><span class="count-label">Días</span></div>
@@ -543,7 +550,7 @@
             <div class="anim-element anim-fade-up delay-2 info-data text-silver" style="font-size: 38px;">Galería en Vivo</div>
             <p class="anim-element anim-fade-up delay-3 body-serif" style="margin: 25px auto;">
                 Captura la magia de esta noche. Sube todas las fotos y videos que tomes directamente en nuestro álbum digital para guardar juntos este recuerdo.<br><br>
-                <span style="font-size: 14px; font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 700; color: var(--blue-primary);">
+                <span style="font-size: 14px; font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 700; color: var(--silver-metallic);">
                     Te sugerimos tener instalada la app de <strong>Google Drive</strong>.
                 </span>
             </p>
